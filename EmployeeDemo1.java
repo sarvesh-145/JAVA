@@ -2,40 +2,36 @@ import java.util.Scanner;
 abstract class Employee{
     int employeeId;
     String employeeName;
-    int BasicSalary;
-Employee(int employeeId,String employeeName,int BasicSalary,int DA,int HRA){
-        this.employeeId=employeeId;
-        this.employeeName=employeeName;
-        this.BasicSalary=BasicSalary;
-}
-public:
+    double BasicSalary;
     abstract void calculateSalary();
     abstract void Display();
 }
 class PermanentEmployee extends Employee{
-    int DA;
-    int HRA;
-    int grosssalary;
-    PermanentEmployee(int DA,int HRA){
-        super();
+    double DA;
+    double HRA;
+    double grosssalary;
+    PermanentEmployee(int employeeId,String employeeName,double BasicSalary,double DA,double HRA){
+        this.employeeId=employeeId;
+        this.employeeName=employeeName;
+        this.BasicSalary=BasicSalary;
         this.DA=DA;
         this.HRA=HRA;
 }
-Public: 
     void calculateSalary(){
-        grosssalary=BasicSalary+((40/100)*DA)+((20/100)*HRA);
+        grosssalary=BasicSalary+((0.40)*DA)+((0.20)*HRA);
     }
     void Display(){
           System.out.println("----EMPLOYEE DETAILS----\n1.EMPLOYEE ID: "+employeeId+"\n2.EMPLOYEE NAME: "+employeeName+"\n3.BASIC SALARY: "+BasicSalary+"\n4.GROSS SALARY: "+grosssalary);
     }
 }
 class ContractEmployee extends Employee{
-    final int FA=5000;
-    int grosssalary;
-    ContractEmployee(){
-        super();
+    final double FA=5000;
+    double grosssalary;
+    ContractEmployee(int employeeId,String employeeName,double BasicSalary){
+        this.employeeId=employeeId;
+        this.employeeName=employeeName;
+        this.BasicSalary=BasicSalary;
 }
-Public: 
     void calculateSalary(){
         grosssalary=BasicSalary+FA;
     }
@@ -44,12 +40,13 @@ Public:
     }
 }
 class EmployeeDemo1{
-  Scanner sc=new Scanner(System.in)
     public static void main(String[] args){
-        PermanentEmployee p=new PermanentEmployee();
-        ContractEmployee c=new ContractEmployee();
-        System.out.println("----SELECT AN OPTION: \n\tPERMANENT EMPLOYEE(1)\n\tCONTRACT EMPLOYEE(2)")
+        Scanner sc=new Scanner(System.in);
+        PermanentEmployee p=new PermanentEmployee(10001,"ARUN",100000,2000,1000);
+        ContractEmployee c=new ContractEmployee(10002,"ARTHI",100000);
+        System.out.println("----SELECT AN OPTION: \n\tPERMANENT EMPLOYEE(1)\n\tCONTRACT EMPLOYEE(2)");
         int option;
+        option=sc.nextInt();
         switch(option){
           case 1:
             p.calculateSalary();
@@ -62,5 +59,3 @@ class EmployeeDemo1{
         }
   }
 }
-
-
