@@ -23,7 +23,7 @@ class Book {
     void Display(){
         System.out.println("-----DETAILS-----\n\tAuthor: " + author + "\n\tTitle: " + title + "\n\tPrice: " + price + "\n\tPublisher: " + publisher + "\n\tStock position: " + stock);
     }
-    Bool FindBook(){
+    Boolean FindBook(){
        String sauthor,stitle;
        System.out.println("ENTER THE AUTHOR AND TITLE: ");
        sauthor=sc.nextLine();
